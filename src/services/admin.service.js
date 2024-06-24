@@ -30,7 +30,7 @@ const loginAdminService = async (loginData) => {
         throw new Error(error.details[0].message);
     }
 
-    const { email, password } = loginData;
+    // const { email, password } = loginData;
 
     const admin = await findAdminByCredentials(email, password);
     if (!admin) {
