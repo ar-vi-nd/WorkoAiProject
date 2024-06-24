@@ -21,10 +21,6 @@ const userSchema = new Schema(
         zipcode:{
             type : String,
             required : true
-        },
-        isAdmin:{
-            type : Boolean,
-            default:false
         }
 
     }
