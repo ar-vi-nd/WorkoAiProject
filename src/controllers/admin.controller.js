@@ -1,3 +1,40 @@
+import { createAdminService, loginAdminService } from "../services/admin.service.js";
+import  { createAdminDTO,loginAdminDTO } from "../dto/admin.dto.js";
+
+const createAdmin = async (req, res) => {
+    try {
+        const adminDTO = new createAdminDTO(req.body);
+        const createdAdmin = await createAdminService(adminDTO);
+        return res.status(201).json({ message: 'Admin created successfully', data: createdAdmin });
+    } catch (error) {
+        return res.status(500).json({ error: `Internal server error: ${error.message}` });
+    }
+};
+
+const loginAdmin = async (req, res) => {
+    try {
+        const loginDTO = new loginAdminDTO(req.body);
+        const { admin, accessToken } = await loginAdminService(loginDTO);
+        return res.status(200).cookie("accessToken", accessToken).json({ admin, accessToken });
+    } catch (error) {
+        return res.status(400).json({ error: `Error logging user: ${error.message}` });
+    }
+};
+
+const adminLogout = async (req, res) => {
+    return res.status(200).clearCookie("accessToken").json({ message: "User Logout Successfully" });
+};
+
+export { createAdmin, loginAdmin, adminLogout };
+
+
+
+
+
+/*
+
+// controller before dao dto and services
+
 import Admin from "../models/admin.model.js";
 import { adminJoiSchema, loginValidationSchema } from "../services/validationschema.js";
 import jwt from "jsonwebtoken"
@@ -84,3 +121,4 @@ const adminLogout = async(req,res)=>{
 }
 
 export {loginAdmin,createAdmin,adminLogout}
+*/

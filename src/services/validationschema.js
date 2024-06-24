@@ -29,7 +29,7 @@ const adminJoiSchema = Joi.object({
   const loginValidationSchema = Joi.object({
     email: Joi.string().email().required(),
     password:Joi.string().min(6).required()
-  })
+  }).options({allowUnknown:true})
 
 
   export {userJoiSchema,adminJoiSchema,userUpdateSchema,loginValidationSchema}
