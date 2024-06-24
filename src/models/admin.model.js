@@ -1,6 +1,6 @@
 import mongoose,{Schema} from "mongoose";
 
-const userSchema = new Schema(
+const adminSchema = new Schema(
     {
         name : {
             type : String,
@@ -9,6 +9,10 @@ const userSchema = new Schema(
         email:{
             type : String,
             required : true
+        },
+        password:{
+            type:String,
+            required:true
         },
         age:{
             type : Number,
@@ -30,6 +34,6 @@ const userSchema = new Schema(
     }
 )
 
-const User = mongoose.model("User",userSchema)
+const Admin = mongoose.model("Admin",adminSchema)
 
-export default User
+export default Admin
