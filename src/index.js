@@ -8,7 +8,7 @@ dotenv.config()
 dbconnect().then(
     ()=>{
         app.on('error',(error)=>{console.log(error)})
-        app.listen(7000,console.log("server connected on port 7000"))
+        app.listen(process.env.PORT||7000,console.log("server connected on port 7000"))
     }
 ).catch((error)=>{
     console.log("error in setting up servr ",error)
