@@ -10,6 +10,7 @@ npm install
 
 3. Create a .env file with the following variables:
 
+// I have used mongodb for my database so you need to add this mongo uri of your mongodb
 MONGO_URI = "your mongodb uri"  
 SECRET_KEY = "yoursecret"
 PORT = "port on which you want to run server"
