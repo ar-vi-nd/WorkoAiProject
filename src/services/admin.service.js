@@ -22,7 +22,7 @@ const createAdminService = async (adminData) => {
 };
 
 const loginAdminService = async (loginData) => {
-    console.log(loginData)
+    // console.log(loginData)
     // here this login data will have an extra field name : undefined so validaion gives error unless i use options (unknown: true) on validation object
     // but now this loginData doesnt have name field so options(unknown: true) on validation object is not required
     const { error, value } = loginValidationSchema.validate(loginData,{ presence: 'required' });
@@ -30,7 +30,7 @@ const loginAdminService = async (loginData) => {
         throw new Error(error.details[0].message);
     }
 
-    // const { email, password } = loginData;
+    const { email, password } = loginData;
 
     const admin = await findAdminByCredentials(email, password);
     if (!admin) {

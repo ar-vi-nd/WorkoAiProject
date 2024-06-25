@@ -1,0 +1,11 @@
+{
+    "presets": [
+      ["@babel/preset-env", {
+        "targets": {
+          "node": "current"
+        },
+        "modules": false // Ensure modules are not transformed (let webpack handle it)
+      }]
+    ]
+  }
+  
